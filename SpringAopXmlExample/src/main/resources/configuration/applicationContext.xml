@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+        * @author Adarsh Kumar
+        * @author $LastChangedBy: Adarsh Kumar$
+        * @version $Revision: 0001 $, $Date:: 1/1/10 0:00 AM#$
+        * @Espark @copyright all right reserve
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://www.springframework.org/schema/context
+	                    http://www.springframework.org/schema/context/spring-context.xsd
+	                    http://www.springframework.org/schema/aop
+	                    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.espark.adarsh"/>
+
+    <bean id="employeeServiceAspect" class="com.espark.adarsh.aop.EmployeeServiceAspect"/>
+
+
+    <aop:config>
+        <aop:aspect id="employeeAspect" ref="employeeServiceAspect">
+            <aop:pointcut id="employeeSavePointcut"
+                          expression="execution( public * com.espark.adarsh.service.EmployeeServiceImpl.saveEmployee(..))"/>
+            <aop:before method="employeeServiceSaveEmployeeBeforeAdvice" pointcut-ref="employeeSavePointcut"/>
+            <aop:after method="employeeServiceSaveEmployeeAfterAdvice" pointcut-ref="employeeSavePointcut"/>
+            <aop:after-returning method="employeeServiceSaveEmployeeAfterReturningAdvice" pointcut-ref="employeeSavePointcut" returning="result"/>
+            <aop:after-throwing method="employeeServiceSaveEmployeeAfterThrowingAdvice" pointcut-ref="employeeSavePointcut" throwing="error"/>
+            <aop:around method="employeeServiceSaveEmployeeAroundAdvice" pointcut-ref="employeeSavePointcut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
