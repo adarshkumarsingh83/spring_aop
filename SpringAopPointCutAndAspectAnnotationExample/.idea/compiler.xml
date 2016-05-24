@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="SpringAopXmlExample" />
+        <module name="SpringAopPointCutAndAspectAnnotationExample" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SpringAopXmlExample" target="1.7" />
+      <module name="SpringAopPointCutAndAspectAnnotationExample" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
