@@ -58,7 +58,7 @@
 
         <spring-framework.version>4.1.7.RELEASE</spring-framework.version>
         <aspectj.version>1.7.4</aspectj.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
 
     <dependencies>
